@@ -6,6 +6,8 @@
 
 (defroutes app-routes
   (GET "/" [] (view/writool-main))
+  (GET "/synonym" [] (view/synonym-main))
+  (POST "/synonym" [word] (view/synonym-list word))
   (route/resources "/")
   (route/not-found "Something wrong...")) ;; provide 404
 
