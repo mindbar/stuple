@@ -16,7 +16,11 @@
 
 (defn writool-main []
   (view-layout
-   [:h1 "Writool"]))
+   [:h1 "Writool"]
+   [:ul
+    [:li [:a {:href "/synonym"} "Synonyms"]]
+    [:li [:a {:href "/translator"} "Translator"]]
+    ]))
 
 (defn synonym-main []
   (view-layout
@@ -28,7 +32,9 @@
   (view-layout
    [:h1 "WordNet synonyms"]
    [:p
-    [:ul
-     (for [syn (s/synonyms word)]
-       [:li syn])
-    ]]))
+    (let [t (s/synonyms word)]
+      (if (:found t) (:result t) "Not found."))
+    ;[:ul
+    ; (for [syn (s/synonyms word)]
+    ;   [:li syn])]
+    ]))

@@ -8,6 +8,7 @@
   (GET "/" [] (view/writool-main))
   (GET "/synonym" [] (view/synonym-main))
   (POST "/synonym" [word] (view/synonym-list word))
+  (GET "/translator" [] "TBD...")
   (route/resources "/")
   (route/not-found "Something wrong...")) ;; provide 404
 

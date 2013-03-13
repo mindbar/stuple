@@ -1,4 +1,5 @@
-(ns writool.service)
+(ns writool.service
+  (:require [writool.wordnet.api :as wordnet]))
 
 (defn synonyms [word]
-  ["Externalize" "Behave" "Clarify"]) ;; TODO mock
+  (wordnet/search word))
