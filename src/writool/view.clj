@@ -22,19 +22,14 @@
     [:li [:a {:href "/translator"} "Translator"]]
     ]))
 
-(defn synonym-main []
-  (view-layout
-   [:form {:method "post" :action "/synonym"}
-    [:input {:type "text" :name "word"}]
-    [:input {:type "submit" :value "->"}]]))
-
 (defn synonym-list [word]
   (view-layout
    [:h1 "WordNet synonyms"]
-   [:p
-    (let [t (s/synonyms word)]
-      (if (:found t) (:result t) "Not found."))
-    ;[:ul
-    ; (for [syn (s/synonyms word)]
-    ;   [:li syn])]
-    ]))
+   [:form {:method "post" :action "/synonym"}
+    [:input {:type "text" :name "word"}]
+    [:input {:type "submit" :value "->"}]]
+   (when word
+     [:p
+      (let [t (s/synonyms word)]
+        (if (:found t) (:result t) "Not found."))
+      ])))

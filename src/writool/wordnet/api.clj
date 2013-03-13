@@ -10,6 +10,8 @@
   (str WORDNET_ENDPOINT word))
 
 ;; TODO replace by some good parser
+;; TODO make non greedy search
+;; TODO replace links with actual requests
 (defn- parse-words [body]
   (first (re-seq #"<ul>(?s).*</ul>" body)))
 

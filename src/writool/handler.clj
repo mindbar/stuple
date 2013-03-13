@@ -6,7 +6,7 @@
 
 (defroutes app-routes
   (GET "/" [] (view/writool-main))
-  (GET "/synonym" [] (view/synonym-main))
+  (GET "/synonym" [] (view/synonym-list nil))
   (POST "/synonym" [word] (view/synonym-list word))
   (GET "/translator" [] "TBD...")
   (route/resources "/")
