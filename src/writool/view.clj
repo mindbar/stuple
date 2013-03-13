@@ -22,6 +22,8 @@
     [:li [:a {:href "/translator"} "Translator"]]
     ]))
 
+;; TODO refactor methos
+;; TODO pos rendering
 (defn synonym-list [word]
   (view-layout
    [:h1 "WordNet synonyms"]
@@ -31,5 +33,12 @@
    (when word
      [:p
       (let [t (s/synonyms word)]
-        (if (:found t) (:result t) "Not found."))
-      ])))
+        (if (not (:found t)) "Not found."
+            (for [ul (:synonyms t)]
+              (list
+               [:h4 "Part-of-speech"]
+               [:ul
+                (for [li ul]
+                  [:li (apply str (interpose ", " (:words li)))]
+                  )
+                ]))))])))
