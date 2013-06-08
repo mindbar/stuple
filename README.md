@@ -1,3 +1,6 @@
-### Writool
+### stuple
 
-Tools for Writers
+
+Tuple of stupid services
+
+* Factorial
