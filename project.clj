@@ -5,6 +5,8 @@
                  [ring "1.1.6"]
                  [compojure "1.1.5"]
                  [enlive "1.1.1"]]
+;                 [org.clojure/java.jdbc "0.2.3"]
+;                 [postgresql/postgresql "9.1-901.jdbc4"]]
   :plugins [[lein-ring "0.8.2"]]
   :ring {:handler stuple.handler/app}
   :profiles
