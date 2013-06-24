@@ -8,7 +8,7 @@
   (GET "/" [] (temple/main-page ))
   (GET "/factorial" [] (temple/factorial-page "0")) ;; empty body here
   (POST "/factorial" [n] (temple/factorial-page n))
-  (GET "/" [] (temple/stat-page))
+  (GET "/stat" [] (temple/stat-page))
   (route/resources "/")
   (route/not-found "Something wrong...")) ;; provide 404
 
