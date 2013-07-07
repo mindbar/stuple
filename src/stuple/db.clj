@@ -11,3 +11,9 @@
     (sql/with-query-results rows
       [(str "select * from stuple.factorial where id = " id)]
       (into [] rows))))
+
+(defn max-factorial []
+  (sql/with-connection db
+    (sql/with-query-results rows
+      [(str "select max(id) from stuple.factorial")]
+      (into [] rows))))
