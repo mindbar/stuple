@@ -1,7 +1,9 @@
 (ns stuple.facade
-  (:require [stuple.db :as db]))
+  (:require [stuple.db :as db])
+  (:require [stuple.utils :as u]))
 
 ;; Just Remote Control for other services
+(def stuple-properties (u/load-properties "resources/properties/stuple.edn"))
 
 (defn get-factorial [id]
   (let [rows (db/select-factorial id)]

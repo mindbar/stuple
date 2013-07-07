@@ -3,6 +3,7 @@
   (:require [stuple.facade :as f]))
 
 (deftemplate main-page "temple/main.html" []
+  [:span#info] (content (str (:stuple-version f/stuple-properties)))
   )
 
 (deftemplate factorial-page "temple/factorial.html" 

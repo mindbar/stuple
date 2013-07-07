@@ -1,4 +1,4 @@
 {:subprotocol "postgresql"
  :subname "//localhost:5432/scorey"
- :user "user"
- :password "password"}
+ :user "mishadoff"
+ :password "kasat1k"}

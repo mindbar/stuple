@@ -1,10 +1,8 @@
 (ns stuple.db
   (:require [clojure.java.jdbc :as sql])
-  (:require [clojure.java.io :as io])
-  (:import [java.io PushbackReader]))
+  (:require [stuple.utils :as u]))
 
-(def db (with-open [r (io/reader "resources/properties/db.edn")]
-          (read (PushbackReader. r))))
+(def db (u/load-properties "resources/properties/db.edn"))
 
 (defn select-factorial [id]
   (sql/with-connection db
