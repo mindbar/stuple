@@ -1,10 +1,10 @@
 (ns stuple.db
-  (:require [clojure.java.jdbc :as sql]))
+  (:require [clojure.java.jdbc :as sql])
+  (:require [clojure.java.io :as io])
+  (:import [java.io PushbackReader]))
 
-(def db {:subprotocol "postgresql"
-         :subname "//localhost:5432/scorey"
-         :user "mishadoff"
-         :password "kasat1k"})
+(def db (with-open [r (io/reader "resources/properties/db.edn")]
+          (read (PushbackReader. r))))
 
 (defn select-factorial [id]
   (sql/with-connection db
