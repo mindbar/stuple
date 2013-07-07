@@ -16,5 +16,4 @@
   ([]))
   
 (deftemplate stat-page "temple/stat.html" []
-  [:span#fact-stat] (content (str (:max (f/max-factorial))))
-  )
+  [:span#fact-stat] (content (str (:max (f/max-factorial)))))

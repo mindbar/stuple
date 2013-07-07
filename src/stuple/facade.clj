@@ -3,7 +3,7 @@
   (:require [stuple.utils :as u]))
 
 ;; Just Remote Control for other services
-(def stuple-properties (u/load-properties "properties/stuple.edn"))
+(def stuple-properties (u/load-properties "resources/properties/stuple.edn"))
 
 (defn get-factorial [id]
   (let [rows (db/select-factorial id)]

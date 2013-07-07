@@ -3,7 +3,9 @@
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [stuple.templates :as temple]
-            [stuple.template-manager :as tema]))
+            [stuple.template-manager :as tema]
+            [ring.adapter.jetty :as jetty])
+  (:gen-class))
 
 (defroutes app-routes
   (GET "/" [] (temple/main-page))
@@ -14,4 +16,8 @@
   (route/not-found "Something wrong...")) ;; provide 404
 
 (def app
-  (handler/site app-routes))
+  (-> app-routes
+      handler/site))
+
+(defn -main [port]
+  (jetty/run-jetty app {:port (Integer. port)}))

@@ -2,7 +2,7 @@
   (:require [clojure.java.jdbc :as sql])
   (:require [stuple.utils :as u]))
 
-(def db (u/load-properties "properties/db.edn"))
+(def db (u/load-properties "resources/properties/db.edn"))
 
 (defn select-factorial [id]
   (sql/with-connection db
