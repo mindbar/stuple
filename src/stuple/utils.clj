@@ -3,5 +3,5 @@
   (:import [java.io PushbackReader]))
 
 (defn load-properties [filename]
-  (with-open [r (io/reader filename)]
+  (with-open [r (-> filename io/resource io/file io/reader)]
     (read (PushbackReader. r))))
