@@ -4,6 +4,7 @@
             [compojure.route :as route]
             [stuple.templates :as temple]
             [stuple.template-manager :as tema]
+            [stuple.api :as api]
             [ring.adapter.jetty :as jetty])
   (:gen-class))
 
@@ -12,6 +13,10 @@
   (GET "/factorial" [] (temple/factorial-page)) ;; empty body here
   (POST "/factorial" [n] (tema/factorial n))
   (GET "/stats" [] (temple/stat-page))
+  
+  ;; API routes 
+  (GET "/api/factorial/:id" [id] (api/factorial id))
+ 
   (route/resources "/")
   (route/not-found "Something wrong...")) ;; provide 404
 
