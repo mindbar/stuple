@@ -1,4 +1,4 @@
-(defproject stuple "0.0.1"
+(defproject stuple "0.0.2"
   :description "A tuple of stupid services"
   :url "http://stuple.mind-bar.com"
   :dependencies [[org.clojure/clojure "1.4.0"]
