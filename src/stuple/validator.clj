@@ -6,3 +6,8 @@
   (try
     (Integer/parseInt s)
     (catch NumberFormatException e nil)))
+
+(defn parse-bigint [s]
+  (try
+    (bigint s)
+    (catch NumberFormatException e nil)))

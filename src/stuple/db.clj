@@ -15,3 +15,9 @@
     (sql/with-query-results rows
       [(str "select max(id) from stuple.factorial")]
       (into [] rows))))
+
+(defn insert-factorial [id value]
+  (sql/with-connection db
+    (sql/insert-values "stuple.factorial" ["id" "value"]
+                       [id value])))
+

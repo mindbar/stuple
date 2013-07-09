@@ -5,6 +5,7 @@
             [stuple.templates :as temple]
             [stuple.template-manager :as tema]
             [stuple.api :as api]
+            [stuple.facade :as f]
             [ring.adapter.jetty :as jetty])
   (:gen-class))
 
@@ -13,7 +14,9 @@
   (GET "/factorial" [] (temple/factorial-page)) ;; empty body here
   (POST "/factorial" [n] (tema/factorial n))
   (GET "/stats" [] (temple/stat-page))
-  
+  (GET "/admin" [] (temple/admin-page))
+  (GET "/admin/factorial-next" [] (f/next-factorial))  
+
   ;; API routes 
   (GET "/api/factorial/:id" [id] (api/factorial id))
  

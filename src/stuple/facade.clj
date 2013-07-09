@@ -1,5 +1,6 @@
 (ns stuple.facade
   (:require [stuple.db :as db])
+  (:require [stuple.validator :as v])
   (:require [stuple.utils :as u]))
 
 ;; Just Remote Control for other services
@@ -13,3 +14,11 @@
   (let [rows (db/max-factorial)]
     (if (= 1 (count rows)) (first rows) {})))
   
+
+
+;; Admin Methods
+(defn next-factorial []
+  (let [i (:max (max-factorial)) ;; FIXME bigdec here
+        next-value (*' (inc' i) (v/parse-bigint (:value (get-factorial i))))]
+    (db/insert-factorial (inc' i) next-value) 
+    (u/redirect "/admin")))
