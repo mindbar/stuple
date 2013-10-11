@@ -14,6 +14,9 @@
                            (= status :miss) "We don't have this number yet"
                            :else "")))
   ([]))
+
+(deftemplate imbored-page "temple/imbored.html" []
+  [:div#content] (content (f/get-imbored)))
   
 (deftemplate stat-page "temple/stat.html" []
   [:span#fact-stat] (content (str (:max (f/max-factorial)))))

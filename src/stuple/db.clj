@@ -20,4 +20,3 @@
   (sql/with-connection db
     (sql/insert-values "stuple.factorial" ["id" "value"]
                        [id value])))
-

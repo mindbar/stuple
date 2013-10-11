@@ -11,11 +11,13 @@
 
 (defroutes app-routes
   (GET "/" [] (temple/main-page))
-  (GET "/factorial" [] (temple/factorial-page)) ;; empty body here
+  (GET "/factorial" [] (temple/factorial-page))
   (POST "/factorial" [n] (tema/factorial n))
   (GET "/stats" [] (temple/stat-page))
   (GET "/admin" [] (temple/admin-page))
   (GET "/admin/factorial-next" [] (f/next-factorial))  
+
+  (GET "/imbored" [] (temple/imbored-page))
 
   ;; API routes 
   (GET "/api/factorial/:id" [id] (api/factorial id))

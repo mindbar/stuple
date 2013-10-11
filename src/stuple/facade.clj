@@ -14,11 +14,19 @@
   (let [rows (db/max-factorial)]
     (if (= 1 (count rows)) (first rows) {})))
   
-
-
 ;; Admin Methods
 (defn next-factorial []
   (let [i (:max (max-factorial)) ;; FIXME bigdec here
         next-value (*' (inc' i) (v/parse-bigint (:value (get-factorial i))))]
     (db/insert-factorial (inc' i) next-value) 
     (u/redirect "/admin")))
+
+
+;; imbored
+(defn get-imbored []
+  ;; TODO stub
+  (rand-nth ["Kill Yourself"
+             "Make some coffee"
+             "Write the book"
+             "Bang your neighbour"
+             "Fix the bug"]))
