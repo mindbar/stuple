@@ -4,3 +4,7 @@ create table stuple.factorial (
   constraint pk_factorial primary key (id)
 );
 
+create table stuple.imbored (
+  title text not null,
+  image text not null
+);

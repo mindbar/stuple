@@ -15,11 +15,17 @@
                            :else "")))
   ([]))
 
-(deftemplate imbored-page "temple/imbored.html" []
-  [:div#content] (content (f/get-imbored)))
+(deftemplate imbored-page "temple/imbored.html"
+  ([])
+  ([e]
+     [:div#title] (content (:title e))
+       [:div#image :img] (set-attr :src (:image e))))
+
   
 (deftemplate stat-page "temple/stat.html" []
   [:span#fact-stat] (content (str (:max (f/max-factorial)))))
 
-(deftemplate admin-page "temple/admin.html" []
-  )
+(deftemplate admin-page "temple/admin.html" 
+  ([error-message] 
+     [:div#error] (content 
+                   (if error-message error-message nil))))

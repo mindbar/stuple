@@ -7,5 +7,8 @@
   (with-open [r (-> filename io/resource io/reader)]
     (read (PushbackReader. r))))
 
+(defn write-file [fname file]
+  (io/copy (:tempfile file) (io/writer fname)))
+
 (defn redirect [addr]
   (ring/redirect addr))

@@ -11,11 +11,21 @@
       Actions: 
       <ul>
 	<li>
-	  factorial  <a href="/admin/factorial-next">next</a>
+	  <b>factorial</b>  [<a href="/admin/factorial-next">next</a>]
+	</li>
+	<li>  
+	  <b>imbored</b>
+	  <form action="/imbored-upload" method="post" enctype="multipart/form-data">
+	    <input type="text" name="title" size="40"/><br/> 
+	    <input name="file" type="file" size="20" />
+	    <input type="submit" name="submit" value="Upload" />
+	  </form>
 	</li>
       </ul>
     </p>
-    
+
+    <div id="error" style="background-color:red;"></div>
+
     <hr/>
     <a href="/">main</a>
   </body>

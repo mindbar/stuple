@@ -6,7 +6,8 @@
             [stuple.template-manager :as tema]
             [stuple.api :as api]
             [stuple.facade :as f]
-            [ring.adapter.jetty :as jetty])
+            [ring.adapter.jetty :as jetty]
+            [ring.middleware.multipart-params :as mp])
   (:gen-class))
 
 (defroutes app-routes
@@ -14,11 +15,13 @@
   (GET "/factorial" [] (temple/factorial-page))
   (POST "/factorial" [n] (tema/factorial n))
   (GET "/stats" [] (temple/stat-page))
-  (GET "/admin" [] (temple/admin-page))
+  (GET "/admin" [] (temple/admin-page nil))
   (GET "/admin/factorial-next" [] (f/next-factorial))  
 
-  (GET "/imbored" [] (temple/imbored-page))
-
+  (GET "/imbored" [] (temple/imbored-page (f/get-imbored)))
+  (mp/wrap-multipart-params
+   (POST "/imbored-upload" [file title] (tema/imbored-add file title)))
+  
   ;; API routes 
   (GET "/api/factorial/:id" [id] (api/factorial id))
  

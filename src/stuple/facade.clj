@@ -24,9 +24,8 @@
 
 ;; imbored
 (defn get-imbored []
-  ;; TODO stub
-  (rand-nth ["Kill Yourself"
-             "Make some coffee"
-             "Write the book"
-             "Bang your neighbour"
-             "Fix the bug"]))
+  (let [rows (db/imbored-random)]
+    (if (= 1 (count rows)) (first rows) {})))
+
+(defn add-imbored [title image]
+  (db/imbored-insert title image))
