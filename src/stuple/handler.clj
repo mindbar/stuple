@@ -24,7 +24,7 @@
   
   ;; API routes 
   (GET "/api/factorial/:id" [id] (api/factorial id))
- 
+  
   (route/resources "/")
   (route/not-found "Something wrong...")) ;; provide 404
 

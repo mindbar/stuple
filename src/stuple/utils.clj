@@ -8,7 +8,8 @@
     (read (PushbackReader. r))))
 
 (defn write-file [fname file]
-  (io/copy (:tempfile file) (io/writer fname)))
+  (with-open [w (io/output-stream fname)]
+    (io/copy (io/file (:tempfile file)) w)))
 
 (defn redirect [addr]
   (ring/redirect addr))
