@@ -23,7 +23,8 @@
 
   
 (deftemplate stat-page "temple/stat.html" []
-  [:span#fact-stat] (content (str (:max (f/max-factorial)))))
+  [:span#fact-stat] (content (str (:max (f/max-factorial))))
+  [:span#imbored-stat] (content (str (f/imbored-count))))
 
 (deftemplate admin-page "temple/admin.html" 
   ([error-message] 

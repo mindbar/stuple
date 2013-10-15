@@ -11,5 +11,10 @@
   (with-open [w (io/output-stream fname)]
     (io/copy (io/file (:tempfile file)) w)))
 
+(defn generate-unique-file-name [file]
+  (let [hs (hash file) 
+        abs-hs (if (neg? hs) (- hs) hs)]
+    (str (System/currentTimeMillis) "_" abs-hs)))
+
 (defn redirect [addr]
   (ring/redirect addr))

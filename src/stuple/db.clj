@@ -33,3 +33,11 @@
     (sql/with-query-results rows
       [(str "SELECT title, image FROM stuple.imbored ORDER BY RANDOM() LIMIT 1")]
       (into [] rows))))
+
+(defn imbored-count []
+  (-> (sql/with-connection db
+        (sql/with-query-results rows
+          [(str "SELECT count(*) as cnt FROM stuple.imbored")]
+          (into [] rows)))
+      first
+      :cnt))

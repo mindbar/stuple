@@ -29,3 +29,6 @@
 
 (defn add-imbored [title image]
   (db/imbored-insert title image))
+
+(defn imbored-count []
+  (db/imbored-count))
