@@ -14,13 +14,20 @@
       (t/factorial-page nil :nan))))
 
 (defn imbored-add [file title]
-  (do 
-    ;; validate file to be an image
-    ;; escape title    
-    (println title)
-    (println file)
-    (println (:filename file))
-    (let [fname (:filename file)]
-      (u/write-file (format "resources/public/%s" fname) file)
-      (f/add-imbored title fname))
-    (t/admin-page nil)))
+  (cond
+   (not= "image" (subs (:content-type file) 0 5))
+   (t/admin-page "Only image files are allowed")
+   
+   (empty? (clojure.string/trim title))
+   (t/admin-page "Title must be a non-empty")
+   
+   :else
+   (do
+     ;; escape title    
+     (println title)
+     (println file)
+     (println (:filename file))
+     (let [fname (:filename file)]
+       (u/write-file (format "resources/public/%s" fname) file)
+       (f/add-imbored title fname))
+     (t/admin-page nil))))
