@@ -16,8 +16,15 @@
   (POST "/factorial" [n] (tema/factorial n))
   (GET "/stats" [] (temple/stat-page))
   (GET "/admin" [] (temple/admin-page nil))
-  (GET "/admin/factorial-next" [] (f/next-factorial))  
-
+  (GET "/admin/factorial-next" [] (f/next-factorial))
+  (GET "/mobilius" [dir name distance]
+       (let [info {:dir dir
+                   :name name
+                   :distance distance}]
+         (Thread/sleep 10000)
+         (println info)
+         info))
+  
   (GET "/imbored" [] (temple/imbored-page (f/get-imbored)))
   (mp/wrap-multipart-params
    (POST "/imbored-upload" [file title] (tema/imbored-add file title)))

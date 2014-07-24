@@ -24,9 +24,6 @@
    :else
    (do
      ;; escape title    
-     (println title)
-     (println file)
-     (println (:filename file))
      (let [fname (:filename file)]
        (u/write-file (format "resources/public/%s" fname) file)
        (f/add-imbored title fname))
